@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  value: string;
+  category?: string;
+  isFluid?: boolean;
+}
+
+import clsx from "clsx";
+import { capitalize, unbeautifyText } from "src/utils/common";
+
+const { title, value, category, isFluid } = Astro.props;
+
+const manipulatedValue = capitalize(value);
+---
+
+<div
+  class={clsx("flex flex-col text-2xl text-black", {
+    "col-span-2": isFluid,
+  })}
+>
+  <h5 class="text-xl text-gray-500 font-sans">{title}:</h5>
+  {
+    category ? (
+      <a
+        href={`/${category}/${unbeautifyText(manipulatedValue)}`}
+        class="font-poppins hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:to-lime-300 hover:from-cyan-800"
+      >
+        {manipulatedValue}
+      </a>
+    ) : (
+      <div class="font-poppins">{manipulatedValue || "Unknown"}</div>
+    )
+  }
+</div>

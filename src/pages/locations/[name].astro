@@ -1,0 +1,51 @@
+---
+import { getRickAndMortyLocationsWithParams } from "src/utils/api";
+import EntityImagePlaceholder from "../../../public/images/placeholder.png";
+import { Image } from "@astrojs/image/components";
+import EntityLayout from "@layouts/entity.astro";
+import InfoCard from "@components/content/info-card.astro";
+import AvatarList from "@components/content/avatar-list.astro";
+
+const {
+  name = "",
+}: {
+  name?: string;
+} = Astro.params;
+
+const locations = await getRickAndMortyLocationsWithParams({
+  name,
+});
+const matchedLocation = locations[0];
+---
+
+<EntityLayout>
+  <div slot="image">
+    <Image
+      src={EntityImagePlaceholder}
+      alt="Character image"
+      height={500}
+      width={500}
+    />
+  </div>
+  <div slot="header" class="text-with-shadow">{matchedLocation.name}</div>
+  <div
+    id="informations"
+    slot="informations"
+    class="py-4 pr-4 grid grid-cols-2 gap-y-4 gap-x-8"
+  >
+    <InfoCard title="Type" value={matchedLocation.type} />
+    <InfoCard title="Dimension" value={matchedLocation.dimension} />
+  </div>
+  <div slot="other" class="pl-8 pr-10 pt-8 flex flex-col gap-8 h-full">
+    <h2 class="text-with-shadow text-5xl font-poppins">Residents</h2>
+    <AvatarList itemUrls={matchedLocation.residents} />
+  </div>
+</EntityLayout>
+
+<style lang="scss">
+  .text-with-shadow {
+    color: #22a2bd;
+    text-shadow: 1px 0px 11px #80fd4c;
+    -webkit-text-stroke: 1px black;
+  }
+</style>

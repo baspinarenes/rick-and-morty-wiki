@@ -1,0 +1,35 @@
+---
+import type { Character } from "src/models/interfaces";
+import { fetchMultipleApiUrl, unbeautifyText } from "src/utils/common";
+
+export interface Props {
+  itemUrls: Array<string>;
+}
+
+const { itemUrls } = Astro.props;
+const itemsData = await fetchMultipleApiUrl(itemUrls);
+const items = itemsData.map((x: any) => x.value);
+---
+
+<ul
+  class="flex-1 flex flex-wrap content-start gap-x-3 gap-y-5 pb-8 pr-6 custom-scrollbar"
+>
+  {
+    items.map((item: Character) => (
+      <li>
+        <a
+          href={`/characters/${unbeautifyText(item.name)}`}
+          class="flex flex-col items-center"
+        >
+          <img
+            src={item.image}
+            alt={`${item.name} image`}
+            width={60}
+            height={60}
+            class="rounded-full"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

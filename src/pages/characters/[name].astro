@@ -1,0 +1,69 @@
+---
+import {
+  getEpisodeName,
+  getRickAndMortyCharactersWithParams,
+} from "src/utils/api";
+import { Image } from "@astrojs/image/components";
+import EntityLayout from "@layouts/entity.astro";
+import InfoCard from "@components/content/info-card.astro";
+import EpisodeList from "@components/content/episode-list.astro";
+
+const {
+  name = "",
+}: {
+  name?: string;
+} = Astro.params;
+
+const characters = await getRickAndMortyCharactersWithParams({
+  name,
+});
+const matchedCharacter = characters[0];
+const firstSeenEpisode = await getEpisodeName(matchedCharacter.episode[0]);
+const lastSeenEpisode = await getEpisodeName(matchedCharacter.episode.at(-1)!);
+---
+
+<EntityLayout>
+  <div slot="image">
+    <Image
+      src={matchedCharacter.image}
+      alt="Character image"
+      height={500}
+      width={500}
+    />
+  </div>
+  <div slot="header" class="text-with-shadow">{matchedCharacter.name}</div>
+  <div
+    id="informations"
+    slot="informations"
+    class="py-4 pr-4 grid grid-cols-2 gap-y-4 gap-x-8"
+  >
+    <InfoCard title="Status" value={matchedCharacter.status} />
+    <InfoCard title="Species" value={matchedCharacter.species} />
+    <InfoCard title="Type" value={matchedCharacter.type} />
+    <InfoCard title="Gender" value={matchedCharacter.gender} />
+    <InfoCard
+      title="Origin"
+      value={matchedCharacter.origin.name}
+      category="locations"
+    />
+    <InfoCard
+      title="Last Known Location"
+      value={matchedCharacter.location.name}
+      category="locations"
+    />
+    <InfoCard
+      title="First Seen Episode"
+      value={firstSeenEpisode.name}
+      category="episodes"
+    />
+    <InfoCard
+      title="Last Seen Episode"
+      value={lastSeenEpisode.name}
+      category="episodes"
+    />
+  </div>
+  <div slot="other" class="px-8 pt-8 flex flex-col gap-8 h-full">
+    <h2 class="text-with-shadow text-5xl font-poppins">Episodes</h2>
+    <EpisodeList episodeUrls={matchedCharacter.episode} />
+  </div>
+</EntityLayout>

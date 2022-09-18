@@ -1,0 +1,24 @@
+---
+export interface Props {
+  title: string;
+}
+
+import clsx from "clsx";
+import { capitalize } from "src/utils/common";
+
+const { title } = Astro.props;
+const isActiveNavlink = Astro.url.pathname.includes(title);
+---
+
+<li>
+  <a
+    href={`/${title}`}
+    class={clsx("px-3 py-2 rounded-md cursor-pointer font-medium", {
+      "text-white bg-gradient-to-br from-[#80fd4c] to-[#22a2bd]":
+        isActiveNavlink,
+      "hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:from-lime-300 hover:to-cyan-800":
+        !isActiveNavlink,
+    })}
+    >{capitalize(title)}
+  </a>
+</li>

@@ -1,0 +1,16 @@
+---
+import { getRickAndMortyCategories } from "src/utils/api";
+import Navlink from "./subcomponents/navlink.astro";
+
+const rickAndMortyCategories = await getRickAndMortyCategories();
+---
+
+<nav>
+  <ul class="flex gap-2">
+    {
+      rickAndMortyCategories.map((categoryName) => (
+        <Navlink title={categoryName} />
+      ))
+    }
+  </ul>
+</nav>

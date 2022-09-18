@@ -1,0 +1,26 @@
+---
+import BaseLayout from "./base.astro";
+---
+
+<BaseLayout>
+  <div class="flex flex-col h-full">
+    <div class="flex h-[calc(50vh-85px)] border-b-2 pl-[650px]">
+      <div
+        class="absolute top-1/2 -mt-[250px] left-20 rounded-full overflow-hidden"
+      >
+        <slot name="image" />
+      </div>
+      <div class="mt-auto mb-10 font-poppins text-huge">
+        <slot name="header" />
+      </div>
+    </div>
+    <div class="flex flex-1 pl-[650px] [max-height:calc(50vh+15px)]">
+      <div class="w-5/12 border-r-2">
+        <slot name="informations" />
+      </div>
+      <div class="w-7/12">
+        <slot name="other" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

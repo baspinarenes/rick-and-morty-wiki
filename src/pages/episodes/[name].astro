@@ -1,0 +1,51 @@
+---
+import { getRickAndMortyEpisodesWithParams } from "src/utils/api";
+import EntityImagePlaceholder from "../../../public/images/placeholder.png";
+import { Image } from "@astrojs/image/components";
+import EntityLayout from "@layouts/entity.astro";
+import InfoCard from "@components/content/info-card.astro";
+import AvatarList from "@components/content/avatar-list.astro";
+
+const {
+  name = "",
+}: {
+  name?: string;
+} = Astro.params;
+
+const episodes = await getRickAndMortyEpisodesWithParams({
+  name,
+});
+const matchedEpisode = episodes[0];
+---
+
+<EntityLayout>
+  <div slot="image">
+    <Image
+      src={EntityImagePlaceholder}
+      alt="Character image"
+      height={500}
+      width={500}
+    />
+  </div>
+  <div slot="header" class="text-with-shadow">{matchedEpisode.name}</div>
+  <div
+    id="informations"
+    slot="informations"
+    class="py-4 pr-4 grid grid-cols-2 gap-y-4 gap-x-8"
+  >
+    <InfoCard title="Episode" value={matchedEpisode.episode} />
+    <InfoCard title="Release Date" value={matchedEpisode.air_date} />
+  </div>
+  <div slot="other" class="pl-8 pr-10 pt-8 flex flex-col gap-8 h-full">
+    <h2 class="text-with-shadow text-5xl font-poppins">Characters</h2>
+    <AvatarList itemUrls={matchedEpisode.characters} />
+  </div>
+</EntityLayout>
+
+<style lang="scss">
+  .text-with-shadow {
+    color: #22a2bd;
+    text-shadow: 1px 0px 11px #80fd4c;
+    -webkit-text-stroke: 1px black;
+  }
+</style>
