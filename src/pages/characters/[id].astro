@@ -1,25 +1,21 @@
 ---
 import {
-  getEpisodeName,
+  getEpisodeData,
   getRickAndMortyCharactersWithParams,
 } from "src/utils/api";
 import { Image } from "@astrojs/image/components";
 import EntityLayout from "@layouts/entity.astro";
 import InfoCard from "@components/content/info-card.astro";
 import EpisodeList from "@components/content/episode-list.astro";
+import { generatePageUrlFromApiUrl } from "src/utils/common";
 
-const {
-  name = "",
-}: {
-  name?: string;
-} = Astro.params;
+const { id } = Astro.params;
 
-const characters = await getRickAndMortyCharactersWithParams({
-  name,
-});
-const matchedCharacter = characters[0];
-const firstSeenEpisode = await getEpisodeName(matchedCharacter.episode[0]);
-const lastSeenEpisode = await getEpisodeName(matchedCharacter.episode.at(-1)!);
+const matchedCharacter = await getRickAndMortyCharactersWithParams(
+  id as string
+);
+const firstSeenEpisode = await getEpisodeData(matchedCharacter.episode[0]);
+const lastSeenEpisode = await getEpisodeData(matchedCharacter.episode.at(-1)!);
 ---
 
 <EntityLayout>
@@ -44,22 +40,22 @@ const lastSeenEpisode = await getEpisodeName(matchedCharacter.episode.at(-1)!);
     <InfoCard
       title="Origin"
       value={matchedCharacter.origin.name}
-      category="locations"
+      url={generatePageUrlFromApiUrl(matchedCharacter.origin.url)}
     />
     <InfoCard
       title="Last Known Location"
       value={matchedCharacter.location.name}
-      category="locations"
+      url={generatePageUrlFromApiUrl(matchedCharacter.location.url)}
     />
     <InfoCard
       title="First Seen Episode"
       value={firstSeenEpisode.name}
-      category="episodes"
+      url={generatePageUrlFromApiUrl(firstSeenEpisode.url)}
     />
     <InfoCard
       title="Last Seen Episode"
       value={lastSeenEpisode.name}
-      category="episodes"
+      url={generatePageUrlFromApiUrl(lastSeenEpisode.url)}
     />
   </div>
   <div slot="other" class="px-8 pt-8 flex flex-col gap-8 h-full">

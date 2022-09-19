@@ -2,14 +2,14 @@
 export interface Props {
   title: string;
   value: string;
-  category?: string;
+  url?: string;
   isFluid?: boolean;
 }
 
 import clsx from "clsx";
 import { capitalize, unbeautifyText } from "src/utils/common";
 
-const { title, value, category, isFluid } = Astro.props;
+const { title, value, url, isFluid } = Astro.props;
 
 const manipulatedValue = capitalize(value);
 ---
@@ -21,9 +21,9 @@ const manipulatedValue = capitalize(value);
 >
   <h5 class="text-xl text-gray-500 font-sans">{title}:</h5>
   {
-    category ? (
+    url ? (
       <a
-        href={`/${category}/${unbeautifyText(manipulatedValue)}`}
+        href={url}
         class="font-poppins hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:to-lime-300 hover:from-cyan-800"
       >
         {manipulatedValue}

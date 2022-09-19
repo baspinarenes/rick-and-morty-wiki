@@ -1,3 +1,9 @@
+export interface ResultInfo {
+  count: number;
+  pages: number;
+  next: string | null;
+  prev: string | null;
+}
 export interface Character {
   id: number;
   name: string;
@@ -5,6 +11,10 @@ export interface Character {
   species: string;
   type: string;
   gender: string;
+  image: string;
+  url: string;
+  created: string;
+  episode: Array<string>;
   origin: {
     name: string;
     url: string;
@@ -13,19 +23,10 @@ export interface Character {
     name: string;
     url: string;
   };
-  image: string;
-  episode: Array<string>;
-  url: string;
-  created: string;
 }
 
 export interface CharacterResponse {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
+  info: ResultInfo;
   results: Array<Character>;
 }
 
@@ -39,13 +40,8 @@ export interface Episode {
   created: string;
 }
 
-export interface EpisodeResponse {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
+export interface EpisodeResult {
+  info: ResultInfo;
   results: Array<Episode>;
 }
 
@@ -59,12 +55,7 @@ export interface Location {
   created: string;
 }
 
-export interface LocationResponse {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
+export interface LocationResult {
+  info: ResultInfo;
   results: Array<Location>;
 }

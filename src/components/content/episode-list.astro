@@ -17,7 +17,7 @@ const episodes = episodesData.map((x: any) => x.value);
   {
     episodes.map((episode: Episode) => (
       <li>
-        <a href={`/episodes/${unbeautifyText(episode.name)}`}>
+        <a href={`/episodes/${episode.id}`}>
           <h4 class="text-2xl font-poppins text-black hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:to-lime-300 hover:from-cyan-800">
             {episode.name}
           </h4>

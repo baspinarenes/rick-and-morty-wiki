@@ -32,3 +32,14 @@ export function fetchMultipleApiUrl(urls: Array<string>) {
     })
   );
 }
+
+export function generatePageUrlFromApiUrl(apiUrl: string): string {
+  const apiUrlParserRegex = /api\/(\w+)\/(\d+)/;
+  const parsedData = apiUrl.match(apiUrlParserRegex);
+
+  if (!parsedData) {
+    return "";
+  }
+
+  return `/${parsedData[1]}s/${parsedData[2]}`;
+}

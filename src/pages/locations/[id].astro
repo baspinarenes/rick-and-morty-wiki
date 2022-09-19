@@ -6,16 +6,9 @@ import EntityLayout from "@layouts/entity.astro";
 import InfoCard from "@components/content/info-card.astro";
 import AvatarList from "@components/content/avatar-list.astro";
 
-const {
-  name = "",
-}: {
-  name?: string;
-} = Astro.params;
+const { id } = Astro.params;
 
-const locations = await getRickAndMortyLocationsWithParams({
-  name,
-});
-const matchedLocation = locations[0];
+const matchedLocation = await getRickAndMortyLocationsWithParams(id as string);
 ---
 
 <EntityLayout>

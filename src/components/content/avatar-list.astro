@@ -17,10 +17,7 @@ const items = itemsData.map((x: any) => x.value);
   {
     items.map((item: Character) => (
       <li>
-        <a
-          href={`/characters/${unbeautifyText(item.name)}`}
-          class="flex flex-col items-center"
-        >
+        <a href={`/characters/${item.id}`} class="flex flex-col items-center">
           <img
             src={item.image}
             alt={`${item.name} image`}

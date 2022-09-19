@@ -1,5 +1,18 @@
 ---
-import BaseLayout from "@layouts/base.astro";
+import AllEntriesLayout from "@layouts/all-entries.astro";
+import FilterArea from "@components/content/filter/filter-area";
+import FilterResult from "@components/content/filter/filter-result";
+import { getRickAndMortyEntitiesWithParams } from "src/utils/api";
+
+const episodesData = await getRickAndMortyEntitiesWithParams("episode");
+const filters = ["name", "episode"];
 ---
 
-<BaseLayout title="Rick and Morty">sadasdas</BaseLayout>
+<AllEntriesLayout title="Rick and Morty">
+  <div slot="filter-area">
+    <FilterArea filters={filters} client:load />
+  </div>
+  <div slot="result-area" class="w-full h-full">
+    <FilterResult category="episodes" data={episodesData} client:load />
+  </div>
+</AllEntriesLayout>

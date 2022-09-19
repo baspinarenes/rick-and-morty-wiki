@@ -2,4 +2,9 @@
 import BaseLayout from "./base.astro";
 ---
 
-<BaseLayout />
+<BaseLayout>
+  <div class="flex justify-between gap-14 px-14 pt-10 h-[calc(100vh-70px)]">
+    <slot name="filter-area" />
+    <slot name="result-area" />
+  </div>
+</BaseLayout>

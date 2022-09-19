@@ -6,16 +6,9 @@ import EntityLayout from "@layouts/entity.astro";
 import InfoCard from "@components/content/info-card.astro";
 import AvatarList from "@components/content/avatar-list.astro";
 
-const {
-  name = "",
-}: {
-  name?: string;
-} = Astro.params;
+const { id } = Astro.params;
 
-const episodes = await getRickAndMortyEpisodesWithParams({
-  name,
-});
-const matchedEpisode = episodes[0];
+const matchedEpisode = await getRickAndMortyEpisodesWithParams(id as string);
 ---
 
 <EntityLayout>
