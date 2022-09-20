@@ -5,6 +5,7 @@ import FilterResult from "@components/content/filter/filter-result";
 import { getRickAndMortyEntities } from "src/utils/api";
 
 const charactersData = await getRickAndMortyEntities("character");
+console.log(charactersData);
 const filters = ["name", "type", "species", "gender", "status"];
 ---
 

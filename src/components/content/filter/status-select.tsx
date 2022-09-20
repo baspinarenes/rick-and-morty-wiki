@@ -20,7 +20,9 @@ const StatusSelect: React.FC<StatusSelectProps> = ({ changeFilter }) => {
         {STATUS_FILTER_SELECT_PLACEHOLDER}
       </option>
       {Object.entries(optionData).map(([text, value]) => (
-        <option value={value}>{text}</option>
+        <option key={value} value={value}>
+          {text}
+        </option>
       ))}
     </select>
   );

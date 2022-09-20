@@ -5,20 +5,10 @@ export interface Props {
 
 import clsx from "clsx";
 import { capitalize } from "src/utils/common";
-import { BsPeopleFill, BsCameraVideoFill } from "react-icons/bs";
-import { MdMyLocation } from "react-icons/md";
 
 const { title }: { title: string } = Astro.props;
 const isActiveNavlink = Astro.url.pathname.includes(title);
 let Icon;
-
-if (title === "characters") {
-  Icon = BsPeopleFill;
-} else if (title === "locations") {
-  Icon = MdMyLocation;
-} else {
-  Icon = BsCameraVideoFill;
-}
 ---
 
 <li>
@@ -34,9 +24,6 @@ if (title === "characters") {
       }
     )}
   >
-    <div>
-      <Icon fontSize={18} />
-    </div>
-    <span class="block sm:hidden md:block">{capitalize(title)}</span>
+    <span class="block">{capitalize(title)}</span>
   </a>
 </li>
