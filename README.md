@@ -1,49 +1,39 @@
-# Welcome to [Astro](https://astro.build)
+# Rick and Morty Wiki
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+This project includes listing, filtering and showing details of Rick and Morty data fetched from API. It is a Astro project.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Using Packages
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+- astrojs
+- nanostores
+- react-infinite-scroll-component
+- jest
+- react-testing-library
+- sass
+- tailwindcss
 
+## Installation
 
-## 🚀 Project Structure
+You can download the project by cloning it from the Github site or by typing the following command:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```console
+git clone https://github.com/baspinarenes/rick-and-morty-wiki
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Run Project
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+In the project directory you can run the following lines:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```console
+npm install
+npm start
+```
 
-## 🧞 Commands
+## Screenshots
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+![](./wiki-images/characters.webp)
+![](./wiki-images/character.webp)
+![](./wiki-images/episodes.webp)
+![](./wiki-images/filtered-result.webp)
+![](./wiki-images/empty-result.webp)
+![](./wiki-images/not-found.webp)

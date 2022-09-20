@@ -5,7 +5,9 @@ import Navlink from "./subcomponents/navlink.astro";
 const rickAndMortyCategories = await getRickAndMortyCategories();
 ---
 
-<nav>
+<nav
+  class="w-full flex justify-center sm:justify-end border-t border-gray-200 sm:border-none"
+>
   <ul class="flex gap-2 py-3 lg:py-0">
     {
       rickAndMortyCategories.map((categoryName) => (

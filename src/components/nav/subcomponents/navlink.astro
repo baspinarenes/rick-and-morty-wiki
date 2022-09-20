@@ -25,7 +25,7 @@ if (title === "characters") {
   <a
     href={`/${title}`}
     class={clsx(
-      "flex items-center px-3 py-2 rounded-md cursor-pointer font-medium",
+      "flex items-center px-3 py-2 rounded-md cursor-pointer font-medium gap-2",
       {
         "text-white bg-gradient-to-br from-[#80fd4c] to-[#22a2bd]":
           isActiveNavlink,
@@ -34,9 +34,9 @@ if (title === "characters") {
       }
     )}
   >
-    <span class="block sm:hidden md:block">{capitalize(title)}</span>
-    <div class="hidden sm:block md:hidden">
+    <div>
       <Icon fontSize={18} />
     </div>
+    <span class="block sm:hidden md:block">{capitalize(title)}</span>
   </a>
 </li>

@@ -22,7 +22,9 @@ const lastSeenEpisode = await getEpisodeData(matchedCharacter.episode.at(-1)!);
       width={500}
     />
   </div>
-  <div slot="header" class="text-with-shadow">{matchedCharacter.name}</div>
+  <div slot="header" class="text-with-shadow">
+    {matchedCharacter.name}
+  </div>
   <div
     id="informations"
     slot="informations"
