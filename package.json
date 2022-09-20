@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "react-scripts test"
   },
   "dependencies": {
     "@astrojs/image": "^0.7.0",
@@ -16,6 +17,9 @@
     "@astrojs/tailwind": "^2.0.1",
     "@astrojs/vercel": "^2.0.0",
     "@nanostores/react": "^0.4.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^12.1.10",
     "astro": "^1.2.6",
     "clsx": "^1.2.1",
     "nanostores": "^0.7.0",
@@ -28,5 +32,8 @@
   "devDependencies": {
     "@types/react": "^18.0.20",
     "sass": "^1.54.9"
+  },
+  "eslintConfig": {
+    "extends": []
   }
 }

@@ -12,25 +12,33 @@ const matchedEpisode = await getRickAndMortyEpisode(id as string);
 ---
 
 <EntityLayout>
-  <div slot="image">
+  <div slot="image" class="flex-shrink-0">
     <Image
       src={EntityImagePlaceholder}
       alt="Character image"
       height={500}
       width={500}
+      class="aspect-square lg:absolute lg:top-1/2 lg:-mt-[250px] lg:left-20 rounded-full overflow-hidden h-40 w-40 sm:h-64 sm:w-64 lg:h-auto lg:w-auto"
     />
   </div>
-  <div slot="header" class="text-with-shadow">{matchedEpisode.name}</div>
+  <div slot="header" class="text-center sm:text-left text-with-shadow flex-1">
+    {matchedEpisode.name}
+  </div>
   <div
     id="informations"
     slot="informations"
-    class="py-4 pr-8 grid grid-cols-2 gap-y-4 gap-x-8"
+    class="py-8 px-8 sm:pr-8 grid grid-cols-2 gap-y-4 gap-x-8 text-center sm:text-left"
   >
     <InfoCard title="Episode" value={matchedEpisode.episode} />
     <InfoCard title="Release Date" value={matchedEpisode.air_date} />
   </div>
-  <div slot="other" class="pl-8 pr-10 pt-8 flex flex-col gap-8 h-full">
-    <h2 class="text-with-shadow text-5xl font-poppins">Characters</h2>
+  <div
+    slot="other"
+    class="px-8 pt-8 pb-14 sm:pb-0 flex flex-col gap-8 h-full text-center sm:text-left"
+  >
+    <h2 class="text-with-shadow text-5xl font-poppins text-center">
+      Characters
+    </h2>
     <AvatarList itemUrls={matchedEpisode.characters} />
   </div>
 </EntityLayout>

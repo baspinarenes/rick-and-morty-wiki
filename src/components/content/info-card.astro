@@ -12,8 +12,8 @@ const { title, value, url } = Astro.props;
 const capitalizedValue = capitalize(value);
 ---
 
-<div class={clsx("flex flex-col text-2xl text-black")}>
-  <h5 class="text-xl text-gray-500 font-sans">{title}:</h5>
+<div class={clsx("flex flex-col text-xl sm:text-2xl text-black")}>
+  <h5 class="text-base sm:text-xl text-gray-500 font-sans">{title}:</h5>
   {
     url ? (
       <a

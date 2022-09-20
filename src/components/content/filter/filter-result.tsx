@@ -83,7 +83,7 @@ const FilterResult: FC<FilterResultProps> = ({ category, data }) => {
             hasMore={Boolean($resultInfo.next)}
             scrollableTarget="scrollableDiv"
             loader={undefined}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pb-14 pr-4 md:pr-14"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pb-14 pr-4 md:pr-8"
           >
             {$results.map((item: any) => (
               <ItemCard
