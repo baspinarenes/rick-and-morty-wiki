@@ -1,16 +1,29 @@
 ---
 import BaseLayout from "../layouts/base.astro";
+import {
+  NOT_FOUND_TITLE,
+  NOT_FOUND_SUBTITLE,
+  NOT_FOUND_REDIRECTION,
+  NOT_FOUND_CAPS_IMAGE_PATH,
+} from "../models/constants";
 ---
 
 <BaseLayout>
   <div
-    class="flex flex-col justify-center items-center h-full w-screen text-2xl"
+    class="flex flex-col justify-center items-center h-full w-screen text-2xl pb-64 md:pb-20 px-10 text-center"
   >
-    <h1 class="mb-8">404</h1>
-    <div class="text-black font-poppinsfont-normal mb-4">
-      You are lost in the world of Rick and Morty!
+    <h1 class="mb-8">{NOT_FOUND_TITLE}</h1>
+    <div class="text-black font-poppins mb-4">
+      {NOT_FOUND_SUBTITLE}
     </div>
-    <a href="/">Return to the familiar place.</a>
+    <a href="/">{NOT_FOUND_REDIRECTION}</a>
+    <img
+      src={NOT_FOUND_CAPS_IMAGE_PATH}
+      alt="Not found caps"
+      class="absolute left-14 bottom-0"
+      height="00"
+      width="300"
+    />
   </div>
 </BaseLayout>
 
@@ -22,9 +35,9 @@ import BaseLayout from "../layouts/base.astro";
     background-clip: text;
     -webkit-text-stroke: 1px black;
     text-shadow: 12px 12px 35px #80fd4c;
-    font-size: 20rem;
-    line-height: 20rem;
-    font-weight: bolder;
+    font-size: min(20rem, 30vw);
+    line-height: 1;
+    font-weight: bold;
     margin-bottom: 40px;
   }
 

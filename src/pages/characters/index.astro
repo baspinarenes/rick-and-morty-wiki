@@ -2,13 +2,13 @@
 import AllEntriesLayout from "@layouts/all-entries.astro";
 import FilterArea from "@components/content/filter/filter-area";
 import FilterResult from "@components/content/filter/filter-result";
-import { getRickAndMortyEntitiesWithParams } from "src/utils/api";
+import { getRickAndMortyEntities } from "src/utils/api";
 
-const charactersData = await getRickAndMortyEntitiesWithParams("character");
+const charactersData = await getRickAndMortyEntities("character");
 const filters = ["name", "type", "species", "gender", "status"];
 ---
 
-<AllEntriesLayout title="Rick and Morty">
+<AllEntriesLayout>
   <div slot="filter-area">
     <FilterArea filters={filters} client:load />
   </div>

@@ -8,7 +8,7 @@ export interface Props {
 
 const { itemUrls } = Astro.props;
 const itemsData = await fetchMultipleApiUrl(itemUrls);
-const items = itemsData.map((x: any) => x.value);
+const items: Array<Character> = itemsData.map((x: any) => x.value);
 ---
 
 <ul

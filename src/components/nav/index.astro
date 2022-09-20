@@ -6,7 +6,7 @@ const rickAndMortyCategories = await getRickAndMortyCategories();
 ---
 
 <nav>
-  <ul class="flex gap-2">
+  <ul class="flex gap-2 py-3 lg:py-0">
     {
       rickAndMortyCategories.map((categoryName) => (
         <Navlink title={categoryName} />

@@ -1,6 +1,6 @@
 ---
 import type { Episode } from "src/models/interfaces";
-import { fetchMultipleApiUrl, unbeautifyText } from "src/utils/common";
+import { fetchMultipleApiUrl } from "src/utils/common";
 
 export interface Props {
   episodeUrls: Array<string>;
@@ -8,7 +8,7 @@ export interface Props {
 
 const { episodeUrls } = Astro.props;
 const episodesData = await fetchMultipleApiUrl(episodeUrls);
-const episodes = episodesData.map((x: any) => x.value);
+const episodes: Array<Episode> = episodesData.map((x: any) => x.value);
 ---
 
 <ul

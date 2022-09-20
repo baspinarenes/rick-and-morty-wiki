@@ -5,20 +5,38 @@ export interface Props {
 
 import clsx from "clsx";
 import { capitalize } from "src/utils/common";
+import { BsPeopleFill, BsCameraVideoFill } from "react-icons/bs";
+import { MdMyLocation } from "react-icons/md";
 
-const { title } = Astro.props;
+const { title }: { title: string } = Astro.props;
 const isActiveNavlink = Astro.url.pathname.includes(title);
+let Icon;
+
+if (title === "characters") {
+  Icon = BsPeopleFill;
+} else if (title === "locations") {
+  Icon = MdMyLocation;
+} else {
+  Icon = BsCameraVideoFill;
+}
 ---
 
 <li>
   <a
     href={`/${title}`}
-    class={clsx("px-3 py-2 rounded-md cursor-pointer font-medium", {
-      "text-white bg-gradient-to-br from-[#80fd4c] to-[#22a2bd]":
-        isActiveNavlink,
-      "hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:from-lime-300 hover:to-cyan-800":
-        !isActiveNavlink,
-    })}
-    >{capitalize(title)}
+    class={clsx(
+      "flex items-center px-3 py-2 rounded-md cursor-pointer font-medium",
+      {
+        "text-white bg-gradient-to-br from-[#80fd4c] to-[#22a2bd]":
+          isActiveNavlink,
+        "hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:from-lime-300 hover:to-cyan-800":
+          !isActiveNavlink,
+      }
+    )}
+  >
+    <span class="block sm:hidden md:block">{capitalize(title)}</span>
+    <div class="hidden sm:block md:hidden">
+      <Icon fontSize={18} />
+    </div>
   </a>
 </li>

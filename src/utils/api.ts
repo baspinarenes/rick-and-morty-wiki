@@ -15,15 +15,7 @@ export async function getRickAndMortyCategories(): Promise<Array<string>> {
   return Object.keys(data);
 }
 
-export async function getRickAndMortyCharacter(ids: Array<number>) {
-  const response = await fetch(
-    `${RICK_AND_MORTY_API_BASE_URL}/character/${ids}`
-  );
-
-  return response.json();
-}
-
-export async function getRickAndMortyEntitiesWithParams(
+export async function getRickAndMortyEntities(
   category: string,
   params?: Record<string, string>
 ) {
@@ -35,21 +27,23 @@ export async function getRickAndMortyEntitiesWithParams(
   return response.json();
 }
 
-export async function getRickAndMortyCharactersWithParams(id: string) {
+export async function getRickAndMortyEntity(category: string, id: string) {
   const response = await fetch(
-    `${RICK_AND_MORTY_API_BASE_URL}/character/${id}`
+    `${RICK_AND_MORTY_API_BASE_URL}/${category}/${id}`
   );
   return response.json();
 }
 
-export async function getRickAndMortyEpisodesWithParams(id: string) {
-  const response = await fetch(`${RICK_AND_MORTY_API_BASE_URL}/episode/${id}`);
-  return response.json();
+export async function getRickAndMortyCharacter(id: string) {
+  return getRickAndMortyEntity("character", id);
 }
 
-export async function getRickAndMortyLocationsWithParams(id: string) {
-  const response = await fetch(`${RICK_AND_MORTY_API_BASE_URL}/location/${id}`);
-  return response.json();
+export async function getRickAndMortyEpisode(id: string) {
+  return getRickAndMortyEntity("episode", id);
+}
+
+export async function getRickAndMortyLocation(id: string) {
+  return getRickAndMortyEntity("location", id);
 }
 
 export async function getEpisodeData(url: string): Promise<{

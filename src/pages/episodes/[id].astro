@@ -1,5 +1,5 @@
 ---
-import { getRickAndMortyEpisodesWithParams } from "src/utils/api";
+import { getRickAndMortyEpisode } from "src/utils/api";
 import EntityImagePlaceholder from "../../../public/images/placeholder.png";
 import { Image } from "@astrojs/image/components";
 import EntityLayout from "@layouts/entity.astro";
@@ -8,7 +8,7 @@ import AvatarList from "@components/content/avatar-list.astro";
 
 const { id } = Astro.params;
 
-const matchedEpisode = await getRickAndMortyEpisodesWithParams(id as string);
+const matchedEpisode = await getRickAndMortyEpisode(id as string);
 ---
 
 <EntityLayout>
@@ -24,7 +24,7 @@ const matchedEpisode = await getRickAndMortyEpisodesWithParams(id as string);
   <div
     id="informations"
     slot="informations"
-    class="py-4 pr-4 grid grid-cols-2 gap-y-4 gap-x-8"
+    class="py-4 pr-8 grid grid-cols-2 gap-y-4 gap-x-8"
   >
     <InfoCard title="Episode" value={matchedEpisode.episode} />
     <InfoCard title="Release Date" value={matchedEpisode.air_date} />

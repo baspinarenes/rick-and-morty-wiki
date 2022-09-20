@@ -1,4 +1,12 @@
 import type React from "react";
+import { STATUS_FILTER_SELECT_PLACEHOLDER } from "src/models/constants";
+
+const optionData = {
+  All: "",
+  Alive: "alive",
+  Dead: "dead",
+  Unknown: "unknown",
+};
 
 const StatusSelect: React.FC<StatusSelectProps> = ({ changeFilter }) => {
   return (
@@ -9,12 +17,11 @@ const StatusSelect: React.FC<StatusSelectProps> = ({ changeFilter }) => {
       defaultValue="status"
     >
       <option value="status" disabled>
-        Status
+        {STATUS_FILTER_SELECT_PLACEHOLDER}
       </option>
-      <option value="">All</option>
-      <option value="alive">Alive</option>
-      <option value="dead">Dead</option>
-      <option value="unknown">Unknown</option>
+      {Object.entries(optionData).map(([text, value]) => (
+        <option value={value}>{text}</option>
+      ))}
     </select>
   );
 };

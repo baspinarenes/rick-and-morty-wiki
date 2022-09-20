@@ -1,8 +1,5 @@
 ---
-import {
-  getEpisodeData,
-  getRickAndMortyCharactersWithParams,
-} from "src/utils/api";
+import { getEpisodeData, getRickAndMortyCharacter } from "src/utils/api";
 import { Image } from "@astrojs/image/components";
 import EntityLayout from "@layouts/entity.astro";
 import InfoCard from "@components/content/info-card.astro";
@@ -11,9 +8,7 @@ import { generatePageUrlFromApiUrl } from "src/utils/common";
 
 const { id } = Astro.params;
 
-const matchedCharacter = await getRickAndMortyCharactersWithParams(
-  id as string
-);
+const matchedCharacter = await getRickAndMortyCharacter(id as string);
 const firstSeenEpisode = await getEpisodeData(matchedCharacter.episode[0]);
 const lastSeenEpisode = await getEpisodeData(matchedCharacter.episode.at(-1)!);
 ---
@@ -31,7 +26,7 @@ const lastSeenEpisode = await getEpisodeData(matchedCharacter.episode.at(-1)!);
   <div
     id="informations"
     slot="informations"
-    class="py-4 pr-4 grid grid-cols-2 gap-y-4 gap-x-8"
+    class="py-4 pr-8 grid grid-cols-2 gap-y-4 gap-x-8"
   >
     <InfoCard title="Status" value={matchedCharacter.status} />
     <InfoCard title="Species" value={matchedCharacter.species} />

@@ -1,4 +1,13 @@
 import type { FC } from "react";
+import { GENDER_FILTER_SELECT_PLACEHOLDER } from "src/models/constants";
+
+const optionData = {
+  All: "",
+  Female: "female",
+  Male: "male",
+  Genderless: "genderless",
+  Unknown: "unknown",
+};
 
 const GenderSelect: FC<GenderSelectProps> = ({ changeFilter }) => {
   return (
@@ -9,13 +18,11 @@ const GenderSelect: FC<GenderSelectProps> = ({ changeFilter }) => {
       defaultValue="gender"
     >
       <option value="gender" disabled>
-        Gender
+        {GENDER_FILTER_SELECT_PLACEHOLDER}
       </option>
-      <option value="">All</option>
-      <option value="female">Female</option>
-      <option value="male">Male</option>
-      <option value="genderless">Genderless</option>
-      <option value="unknown">Unknown</option>
+      {Object.entries(optionData).map(([text, value]) => (
+        <option value={value}>{text}</option>
+      ))}
     </select>
   );
 };

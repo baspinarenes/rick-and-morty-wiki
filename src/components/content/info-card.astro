@@ -3,22 +3,16 @@ export interface Props {
   title: string;
   value: string;
   url?: string;
-  isFluid?: boolean;
 }
 
 import clsx from "clsx";
-import { capitalize, unbeautifyText } from "src/utils/common";
+import { capitalize } from "src/utils/common";
 
-const { title, value, url, isFluid } = Astro.props;
-
-const manipulatedValue = capitalize(value);
+const { title, value, url } = Astro.props;
+const capitalizedValue = capitalize(value);
 ---
 
-<div
-  class={clsx("flex flex-col text-2xl text-black", {
-    "col-span-2": isFluid,
-  })}
->
+<div class={clsx("flex flex-col text-2xl text-black")}>
   <h5 class="text-xl text-gray-500 font-sans">{title}:</h5>
   {
     url ? (
@@ -26,10 +20,10 @@ const manipulatedValue = capitalize(value);
         href={url}
         class="font-poppins hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-br hover:to-lime-300 hover:from-cyan-800"
       >
-        {manipulatedValue}
+        {capitalizedValue}
       </a>
     ) : (
-      <div class="font-poppins">{manipulatedValue || "Unknown"}</div>
+      <div class="font-poppins">{capitalizedValue || "Unknown"}</div>
     )
   }
 </div>
